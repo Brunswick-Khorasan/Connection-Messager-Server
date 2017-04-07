@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.net.*;
 /**
  * The Server used by the messaging application
- * @author Morgan
- *
+ * @author Morgan</br>
+ * http://docs.oracle.com/javase/tutorial/networking/sockets/index.html - The Oracle Java(tm) Tutorials
  */
 public class ConnectionServer {
 	public static final int PORTNUM = 3576;

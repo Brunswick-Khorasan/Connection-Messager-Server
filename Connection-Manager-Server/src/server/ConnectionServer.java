@@ -1,9 +1,8 @@
 package server;
 
 import java.io.IOException;
-import java.net.*;
+import java.net.ServerSocket;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 /**
@@ -23,6 +22,7 @@ public class ConnectionServer {
 			public void run() {
 				clients = new ArrayList<>();
 				serverName = JOptionPane.showInputDialog("Enter a name for the server");
+				inter.setServerName(serverName);
 				try (ServerSocket connection = new ServerSocket(Constants.PORTNUM)) {
 					sayToAll("Starting up on port " + Constants.PORTNUM + " ...",null);
 					Thread connectUsers = new Thread() {
@@ -33,7 +33,7 @@ public class ConnectionServer {
 									clients.add(new Client(connection.accept()));
 									inter.addToLog("[SERVER] Client Accepted");
 									clients.get(clients.size()-1).getWriter().println("[SERVER] You have connected to "+serverName+"!");
-									clients.get(clients.size()-1).getWriter().print("[SERVER] Enter a name to be called by: ");
+									clients.get(clients.size()-1).getWriter().println("[SERVER] Enter a name to be called by: ");
 									clients.get(clients.size()-1).setName(clients.get(clients.size()-1).getReader().readLine());
 									sayToAll("User " + clients.get(clients.size()-1).getName() + " has connected!",null);
 								} catch (IOException e) {

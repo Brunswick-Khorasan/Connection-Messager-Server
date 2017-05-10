@@ -36,6 +36,7 @@ public class ConnectionServer {
 									clients.get(clients.size()-1).getWriter().println("[SERVER] Enter a name to be called by: ");
 									clients.get(clients.size()-1).setName(clients.get(clients.size()-1).getReader().readLine());
 									sayToAll("User " + clients.get(clients.size()-1).getName() + " has connected!",null);
+									inter.addUser(clients.get(clients.size()-1).getName());
 								} catch (IOException e) {
 									e.printStackTrace();
 								}
@@ -55,6 +56,7 @@ public class ConnectionServer {
 												case Constants.CommandCodes.DISCONNECT: 
 													sayToAll(c.getName() + " has disconnected",null);
 													clients.remove(c);
+													inter.removeUser(c.getName());
 													break;
 												}
 											} else {

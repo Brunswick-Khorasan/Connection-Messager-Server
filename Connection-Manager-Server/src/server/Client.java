@@ -19,7 +19,7 @@ public class Client {
 	public Client(Socket clientSocket) {
 		client = clientSocket;
 		try {
-			out = new PrintWriter(client.getOutputStream());
+			out = new PrintWriter(client.getOutputStream(),true);
 			in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 		} catch (IOException e) {
 			e.printStackTrace();

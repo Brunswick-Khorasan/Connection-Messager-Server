@@ -1,6 +1,9 @@
 package server;
 
 import java.awt.FlowLayout;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -35,9 +38,17 @@ public class ServerInterface extends JFrame {
 		userPanel.add(new JLabel("Active Users:"));
 		userPanel.add(users);
 		userPanel.setLayout(new BoxLayout(userPanel,BoxLayout.PAGE_AXIS));
+		JPanel talkPanel = new JPanel();
+		talkPanel.setLayout(new BoxLayout(talkPanel,BoxLayout.PAGE_AXIS));
+		try {
+			talkPanel.add(new JLabel("Your IP Address is: "+InetAddress.getLocalHost().getHostAddress()));
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+		talkPanel.add(scrollbar);
 		add(userPanel);
 		add(new JSeparator(SwingConstants.VERTICAL));
-		add(scrollbar);
+		add(talkPanel);
 		setLayout(new BoxLayout(this.getContentPane(),BoxLayout.LINE_AXIS));
 		setResizable(false);
 		server.start();

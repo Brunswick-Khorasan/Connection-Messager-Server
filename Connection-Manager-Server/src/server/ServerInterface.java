@@ -1,17 +1,13 @@
 package server;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Collections;
 
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
@@ -66,17 +62,33 @@ public class ServerInterface extends JFrame {
 		pack();
 		setVisible(true);
 	}
+	/**
+	 * Add a message to the server's log
+	 * @param message the message to send
+	 */
 	public void addToLog(String message) {
 		log.append("\n"+message);
 	}
+	/**
+	 * Set the title of the server
+	 * @param name the new title
+	 */
 	public void setServerName(String name) {
 		setTitle("Connection Server - " + name);
 	}
+	/**
+	 * Add a user to the userlist
+	 * @param username the user's username
+	 */
 	public void addUser(String username) {
 		userList.add(username);
 		Collections.sort(userList);
 		users.setText(userList.toString().replace('[', ' ').replace(']', ' ').replaceAll(", ", "\n").trim());
 	}
+	/**
+	 * Remove a user from the userlist
+	 * @param username
+	 */
 	public void removeUser(String username) {
 		userList.remove(userList.indexOf(username));
 		Collections.sort(userList);

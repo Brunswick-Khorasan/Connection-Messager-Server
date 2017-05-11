@@ -25,10 +25,30 @@ public class Client {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * Get the client socket
+	 * @return the socket of this client
+	 */
 	public Socket getClient() {return client;}
+	/**
+	 * Get the writer associated with this client
+	 * @return a PrintWriter object that connects to the client
+	 */
 	public PrintWriter getWriter() {return out;}
+	/**
+	 * Get the reader associated with this client
+	 * @return a BufferedReader of the client's inputs
+	 */
 	public BufferedReader getReader() {return in;}
+	/**
+	 * Set the username of the client
+	 * @param name the new name
+	 */
 	public void setName(String name) {this.name=name;}
+	/**
+	 * Get the username of the client
+	 * @return
+	 */
 	public String getName() {return name;}
 	
 }

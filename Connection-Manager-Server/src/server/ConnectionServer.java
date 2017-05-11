@@ -27,7 +27,16 @@ public class ConnectionServer {
 		emoticons.put("ae", "æ");
 		emoticons.put("ae_capital", "Æ");
 		emoticons.put("spade", "♠");
+		emoticons.put("club", "♣");
+		emoticons.put("diamond", "♦");
+		emoticons.put("paragraph", "¶");
+		emoticons.put("section", "§");
+		emoticons.put("mu", "µ");
+		emoticons.put("table_flip", "(ノ°Д°）ノ︵ ┻━┻");
 	}
+	/**
+	 * Starts the server, making it ready to receive connections
+	 */
 	public void start() {
 		Thread server = new Thread() {
 			public void run() {
@@ -109,6 +118,11 @@ public class ConnectionServer {
 		};
 		server.start();
 	}
+	/**
+	 * Tells all users connected to the server, and displays to console
+	 * @param message the message to send
+	 * @param source the client who sent the message (or null for SERVER)
+	 */
 	public void sayToAll(String message,Client source) {
 		String sMessage = source==null?"[SERVER] " + message:"["+source.getName()+"] " + message;
 		inter.addToLog(sMessage);

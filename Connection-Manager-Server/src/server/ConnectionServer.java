@@ -26,6 +26,7 @@ public class ConnectionServer {
 		emoticons.put("thorn_capital", "Þ");
 		emoticons.put("ae", "æ");
 		emoticons.put("ae_capital", "Æ");
+		emoticons.put("spade", "♠");
 	}
 	public void start() {
 		Thread server = new Thread() {

@@ -20,7 +20,7 @@ import javax.swing.SwingConstants;
  * @author Morgan
  *
  */
-public class ServerInterface extends JFrame {
+public class ServerInterface extends JFrame implements ServerGUI {
 	private static final long serialVersionUID = -5657260030042209306L;
 	private JTextArea log;
 	private JTextArea users;

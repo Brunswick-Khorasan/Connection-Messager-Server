@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public class ConnectionServer {
 	private ArrayList<Client> clients;
 	private String serverName;
-	private ServerInterface inter;
+	private ServerGUI inter;
 	private HashMap<String, String> emoticons;
 	public ConnectionServer(ServerInterface inter) {
 		this.inter = inter;

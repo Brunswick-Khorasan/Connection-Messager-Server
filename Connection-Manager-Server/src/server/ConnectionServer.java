@@ -38,9 +38,6 @@ public class ConnectionServer {
 		emoticons.put("section", "§");
 		emoticons.put("mu", "µ");
 		emoticons.put("table_flip", "(ノ°Д°)ノ︵ ┻━┻");
-		emoticons.put(":pi:", "π");
-		emoticons.put(":alpha:", "α");
-		emoticons.put(":beta:", "β");
 	}
 	/**
 	 * Starts the server, making it ready to receive connections

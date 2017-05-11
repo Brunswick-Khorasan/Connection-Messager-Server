@@ -1,12 +1,17 @@
 package server;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
@@ -69,10 +74,12 @@ public class ServerInterface extends JFrame {
 	}
 	public void addUser(String username) {
 		userList.add(username);
+		Collections.sort(userList);
 		users.setText(userList.toString().replace('[', ' ').replace(']', ' ').replaceAll(", ", "\n").trim());
 	}
 	public void removeUser(String username) {
 		userList.remove(userList.indexOf(username));
+		Collections.sort(userList);
 		users.setText(userList.toString().replace('[', ' ').replace(']', ' ').replaceAll(", ", "\n").trim());
 	}
 }

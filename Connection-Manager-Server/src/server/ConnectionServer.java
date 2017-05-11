@@ -1,9 +1,14 @@
 package server;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import javax.swing.JOptionPane;
 /**
@@ -15,9 +20,11 @@ public class ConnectionServer {
 	private ArrayList<Client> clients;
 	private String serverName;
 	private ServerGUI inter;
+	private Queue<String> logText;
 	private HashMap<String, String> emoticons;
 	public ConnectionServer(ServerInterface inter) {
 		this.inter = inter;
+		logText = new LinkedList<String>();
 		emoticons = new HashMap<>(); //Emoticons are specified by ":key:", which is replaced with the key's value
 		emoticons.put("smile", "☺");
 		emoticons.put("smile_black", "☻");
@@ -77,6 +84,14 @@ public class ConnectionServer {
 													clients.remove(c);
 													inter.removeUser(c.getName());
 													break;
+												case Constants.CommandCodes.DOWNLOADLOG:
+													String text = "";
+													Iterator<String> it = logText.iterator();
+													while (it.hasNext()) {
+														text = text + "§" + it.next(); //Packaged with § to get multiline in one
+													}
+													c.getWriter().println(text);
+													break;
 												}
 											} else { //Display the message
 												if (cMessage.contains(":")) { // Emoticon changing
@@ -126,6 +141,7 @@ public class ConnectionServer {
 	public void sayToAll(String message,Client source) {
 		String sMessage = source==null?"[SERVER] " + message:"["+source.getName()+"] " + message;
 		inter.addToLog(sMessage);
+		logText.add(sMessage);
 		for (Client c : clients.toArray(new Client[0])) {
 			c.getWriter().println(sMessage);
 		}

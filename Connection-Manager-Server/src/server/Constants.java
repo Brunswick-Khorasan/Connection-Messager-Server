@@ -5,5 +5,6 @@ public final class Constants {
 	public static final char COMMANDCHAR = '‰';
 	public static final class CommandCodes {
 		public static final char DISCONNECT = 'D';
+		public static final char DOWNLOADLOG = 'L';
 	}
 }

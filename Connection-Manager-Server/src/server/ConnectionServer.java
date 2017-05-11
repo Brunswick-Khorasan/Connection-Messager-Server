@@ -37,7 +37,10 @@ public class ConnectionServer {
 		emoticons.put("paragraph", "¶");
 		emoticons.put("section", "§");
 		emoticons.put("mu", "µ");
-		emoticons.put("table_flip", "(ノ°Д°）ノ︵ ┻━┻");
+		emoticons.put("table_flip", "(ノ°Д°)ノ︵ ┻━┻");
+		emoticons.put(":pi:", "π");
+		emoticons.put(":alpha:", "α");
+		emoticons.put(":beta:", "β");
 	}
 	/**
 	 * Starts the server, making it ready to receive connections
@@ -86,7 +89,7 @@ public class ConnectionServer {
 													String text = "";
 													Iterator<String> it = logText.iterator();
 													while (it.hasNext()) {
-														text = text + "§" + it.next(); //Packaged with § to get multiline in one
+														text = text + "¬" + it.next(); //Packaged with ¬ to get multiline in one
 													}
 													c.getWriter().println(text);
 													break;
@@ -120,9 +123,9 @@ public class ConnectionServer {
 							}
 						}
 					};
-					sayToAll("User-connection thread created",null);
 					connectUsers.start();
 					sayToAll("User-connection thread started",null);
+					sayToAll("User-listening thread started",null);
 					listenToUsers.run();
 				} catch (IOException e) {
 					e.printStackTrace();
